@@ -1,5 +1,5 @@
 # Concept Bottleneck Large Language Models
-This is the repo for the paper: [**Concept Bottleneck Large Language Models**](). We proposed Concept Bottleneck Large Language Model (CB-LLM), a groundbreaking framework for developing inherently interpretable Large Language Models (LLMs). CB-LLM extends and generalizes our earlier research, [**Crafting Large Language Models for Enhanced Interpretability**](https://arxiv.org/abs/2407.04307), offering both interpretability and controllability in text generation. The repo contains two parts: CB-LLM (classification) and CB-LLM (generation)
+This is the repo for the paper: [**Concept Bottleneck Large Language Models**](https://arxiv.org/abs/2412.07992). We proposed Concept Bottleneck Large Language Model (CB-LLM), a groundbreaking framework for developing inherently interpretable Large Language Models (LLMs). CB-LLM extends and generalizes our earlier research, [**Crafting Large Language Models for Enhanced Interpretability**](https://arxiv.org/abs/2407.04307), offering both interpretability and controllability in text generation. The repo contains two parts: CB-LLM (classification) and CB-LLM (generation)
 
 ## Part I: CB-LLM (classification)
 <p align="center">
