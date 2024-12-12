@@ -155,7 +155,7 @@ python test_generation.py
 By changing the activation value of the corresponding neuron in Line 48, the generation would contain the desired concepts.
 Set the argument `--dataset yelp_polarity`, `--dataset ag_news`, or `--dataset dbpedia_14` to switch the dataset.
 ## Cite this work
-Chung-En Sun, Tuomas Oikarinen, Tsui-Wei Weng. "Crafting Large Language Models for Enhanced Interpretability". arXiv preprint, 2024
+Chung-En Sun, Tuomas Oikarinen, Tsui-Wei Weng. "Concept Bottleneck Large Language Models". arXiv preprint, 2024
 ```
 @article{cbllm,
    title={Concept Bottleneck Large Language Models},
