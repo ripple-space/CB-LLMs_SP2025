@@ -1,5 +1,10 @@
 # Concept Bottleneck Large Language Models
-This is the repo for the paper: [**Concept Bottleneck Large Language Models**](https://arxiv.org/abs/2412.07992). We proposed Concept Bottleneck Large Language Model (CB-LLM), a groundbreaking framework for developing inherently interpretable Large Language Models (LLMs). CB-LLM extends and generalizes our earlier research, [**Crafting Large Language Models for Enhanced Interpretability**](https://arxiv.org/abs/2407.04307), offering both interpretability and controllability in text generation. The repo contains two parts: CB-LLM (classification) and CB-LLM (generation)
+This is the official repo for the paper: [**Concept Bottleneck Large Language Models**](). 
+
+* In this work, we proposed **Concept Bottleneck Large Language Model (CB-LLM)**, the first framework for building *inherently interpretable* Large Language Models (LLMs) that works on both text generation and text classification tasks. CB-LLM extends and generalizes our earlier research, [**Crafting Large Language Models for Enhanced Interpretability**](https://arxiv.org/abs/2407.04307) for text classification tasks, offering both interpretability and controllability in text generation.
+* This repo contains two parts:
+  * **CB-LLM (classification):** Transforming pre-trained LLMs into interpretable LLMs for text classification 
+  * **CB-LLM (generation):** Transforming pre-trained LLMs into interpretable LLMs for text generation  
 
 ## Part I: CB-LLM (classification)
 <p align="center">
@@ -84,6 +89,17 @@ python test_black_box.py --model_path baseline_models/roberta/backbone_finetuned
 ```
 Set the argument `--dataset yelp_polarity`, `--dataset ag_news`, or `--dataset dbpedia_14` to switch the dataset.
 Please change the argument `--model_path` accordingly if using other settings.
+### Key results
+##### *Test accuracy of CB-LLM. CB-LLMs are competitive with the black-box model after applying ACC.*
+
+| Accuracy ↑           | SST2   | YelpP   | AGnews  | DBpedia  |
+|-----------------------|--------|---------|---------|----------|
+| **Ours:**            |        |         |         |          |
+| CB-LLM               | 0.9012 | 0.9312  | 0.9009  | 0.9831   |
+| CB-LLM w/ ACC        | **0.9407** | **<span style="color:blue">0.9806</span>** | **0.9453** | **<span style="color:blue">0.9928</span>** |
+| **Baselines:**       |        |         |         |          |
+| TBM&C³M              | 0.9270 | 0.9534  | 0.8972  | 0.9843   |
+| Roberta-base fine-tuned (black-box) | 0.9462 | 0.9778  | 0.9508  | 0.9917   |
 
 ## Part II: CB-LLM (generation)
 <p align="center">
@@ -124,7 +140,7 @@ python test_concepts.py
 Please rename the desired checkpoint of the peft model and CBL as `llama3` and `cbl.pt`, as the script recognizes these file names.
 Set the argument `--dataset yelp_polarity`, `--dataset ag_news`, or `--dataset dbpedia_14` to switch the dataset.
 #### Test the steerability of CB-LLM (generation)
-To test the steerability (concept accuracy) of the CB-LLM, need t first train the roberta classifier
+To test the steerability (concept accuracy) of the CB-LLM, need to first train the roberta classifier (to determine whether the generated text belongs to the desired class)
 ```
 python train_classifier.py
 ```
@@ -147,6 +163,11 @@ Run
 python test_weight.py
 ```
 Set the argument `--dataset yelp_polarity`, `--dataset ag_news`, or `--dataset dbpedia_14` to switch the dataset.
+Paste the results to [SankeyMATIC](https://sankeymatic.com/build/) to visualize the weights. For example,
+<p align="center">
+  <img src="./fig/sport_weights.png" width="50%" height="50%" />
+</p>
+
 #### Intervene the concept neurons and generate a sentence using CB-LLM
 Run
 ```
@@ -154,8 +175,23 @@ python test_generation.py
 ```
 By changing the activation value of the corresponding neuron in Line 48, the generation would contain the desired concepts.
 Set the argument `--dataset yelp_polarity`, `--dataset ag_news`, or `--dataset dbpedia_14` to switch the dataset.
+### Key results
+##### *The accuracy, steerability, and perplexity of CB-LLMs (generation). CB-LLMs perform well on accuracy (↑) and perplexity (↓) while providing higher steerability (↑)*
+
+| Method                         | Metric           | SST2    | YelpP  | AGnews  | DBpedia |
+|---------------------------------|------------------|---------|--------|---------|---------|
+| **CB-LLM (Ours)**               | Accuracy↑        | 0.9638  | **0.9855** | 0.9439  | 0.9924  |
+|                                 | Steerability↑    | **0.82** | **0.95**  | **0.85**  | **0.58**  |
+|                                 | Perplexity↓      | 116.22  | 13.03  | 18.25   | 37.59   |
+| **CB-LLM w/o ADV training**     | Accuracy↑        | 0.9676  | 0.9830  | 0.9418  | **0.9934** |
+|                                 | Steerability↑    | 0.57    | 0.69    | 0.52    | 0.21    |
+|                                 | Perplexity↓      | **59.19** | 12.39   | 17.93   | **35.13** |
+| **Llama3 finetuned (black-box)**| Accuracy↑        | **0.9692** | 0.9851  | **0.9493** | 0.9919  |
+|                                 | Steerability↑    | No      | No      | No      | No      |
+|                                 | Perplexity↓      | 84.70   | **6.62**  | **12.52** | 41.50   |
+
 ## Cite this work
-Chung-En Sun, Tuomas Oikarinen, Tsui-Wei Weng. "Concept Bottleneck Large Language Models". arXiv preprint, 2024
+Chung-En Sun, Tuomas Oikarinen, Berk Ustun, and Tsui-Wei Weng. "*Concept Bottleneck Large Language Models*". arXiv preprint, 2024
 ```
 @article{cbllm,
    title={Concept Bottleneck Large Language Models},
