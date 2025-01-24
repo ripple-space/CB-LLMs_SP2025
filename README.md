@@ -1,5 +1,6 @@
 # Concept Bottleneck Large Language Models
 01/22 update: CB-LLMs is accepted by ICLR2025!
+
 This is the official repo for the paper: [**Concept Bottleneck Large Language Models**](https://arxiv.org/abs/2412.07992).  
 
 * In this work, we proposed **Concept Bottleneck Large Language Model (CB-LLM)**, the first framework for building *inherently interpretable* Large Language Models (LLMs) that works on both text generation and text classification tasks. CB-LLM extends and generalizes our earlier research, [**Crafting Large Language Models for Enhanced Interpretability**](https://arxiv.org/abs/2407.04307) for text classification tasks, offering both interpretability and controllability in text generation.
