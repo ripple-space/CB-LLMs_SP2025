@@ -54,8 +54,11 @@ class Llama_baseline_generation(nn.Module):
         return x
 
     def generate(self, ids, preLM, length=100, temp=0.7, topk=100, topp=0.9, repetition_penalty=1.5):
+        past_key_values = None
         for i in range(length):
-            features = preLM(ids).last_hidden_state.float()
+            outputs = preLM(ids[:, -1:] if past_key_values is not None else ids, past_key_values=past_key_values, use_cache=True)
+            past_key_values = outputs.past_key_values
+            features = outputs.last_hidden_state.float()
             projected = self.projection(features)
             x = self.gelu(projected)
             x = self.dropout(x)
@@ -67,7 +70,7 @@ class Llama_baseline_generation(nn.Module):
             filtered_logits = top_k_top_p_filtering(next_token_logits, top_k=topk, top_p=topp)
             next_token = torch.multinomial(F.softmax(filtered_logits, dim=-1), num_samples=1)
             ids = torch.cat((ids, next_token), dim=-1)
-            if list(next_token[0]) == [128001]:
+            if eos_token_id is not None and next_token.item() == eos_token_id:
                 break
         return ids
 
@@ -87,9 +90,12 @@ class CBL(nn.Module):
         e = torch.cat((self.relu(concepts), unsup_features), dim=-1)
         return self.relu(concepts), unsup_features, self.fc(e)
 
-    def generate(self, ids, preLM, intervene=None, length=100, temp=0.7, topk=100, topp=0.9, repetition_penalty=1.5):
+    def generate(self, ids, preLM, intervene=None, length=100, temp=0.7, topk=100, topp=0.9, repetition_penalty=1.5, eos_token_id=128001):
+        past_key_values = None
         for i in range(length):
-            features = preLM(ids).last_hidden_state.float()
+            outputs = preLM(ids[:, -1:] if past_key_values is not None else ids, past_key_values=past_key_values, use_cache=True)
+            past_key_values = outputs.past_key_values
+            features = outputs.last_hidden_state.float()
             concepts = self.cbl(features)
             unsup_features = self.unsup(features)
             if intervene:
@@ -103,6 +109,6 @@ class CBL(nn.Module):
             filtered_logits = top_k_top_p_filtering(next_token_logits, top_k=topk, top_p=topp)
             next_token = torch.multinomial(F.softmax(filtered_logits, dim=-1), num_samples=1)
             ids = torch.cat((ids, next_token), dim=-1)
-            if list(next_token[0]) == [128001]:
+            if eos_token_id is not None and next_token.item() == eos_token_id:
                 break
         return ids, self.relu(concepts)[0]
