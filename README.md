@@ -1,5 +1,7 @@
 # Concept Bottleneck Large Language Models
-This is the official repo for the paper: [**Concept Bottleneck Large Language Models**](https://arxiv.org/pdf/2412.07992).  
+01/22 update: CB-LLMs is accepted by ICLR2025!
+
+This is the official repo for the paper: [**Concept Bottleneck Large Language Models**](https://arxiv.org/abs/2412.07992).  
 
 * In this work, we proposed **Concept Bottleneck Large Language Model (CB-LLM)**, the first framework for building *inherently interpretable* Large Language Models (LLMs) that works on both text generation and text classification tasks. CB-LLM extends and generalizes our earlier research, [**Crafting Large Language Models for Enhanced Interpretability**](https://arxiv.org/abs/2407.04307) for text classification tasks, offering both interpretability and controllability in text generation.
 * This repo contains two parts:
@@ -191,12 +193,12 @@ Set the argument `--dataset yelp_polarity`, `--dataset ag_news`, or `--dataset d
 |                                 | Perplexity↓      | 84.70   | **6.62**  | **12.52** | 41.50   |
 
 ## Cite this work
-Chung-En Sun, Tuomas Oikarinen, Berk Ustun, and Tsui-Wei Weng. "*Concept Bottleneck Large Language Models*". arXiv preprint, 2024
+Chung-En Sun, Tuomas Oikarinen, Berk Ustun, and Tsui-Wei Weng. "*Concept Bottleneck Large Language Models*". ICLR, 2025
 ```
 @article{cbllm,
    title={Concept Bottleneck Large Language Models},
    author={Chung-En Sun, Tuomas Oikarinen, Berk Ustun, Tsui-Wei Weng},
-   journal={arXiv 2024},
+   journal={ICLR 2025},
    year={2024}
 }
 ```
