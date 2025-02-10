@@ -183,7 +183,7 @@ Set the argument `--dataset yelp_polarity`, `--dataset ag_news`, or `--dataset d
 | Method                         | Metric           | SST2    | YelpP  | AGnews  | DBpedia |
 |---------------------------------|------------------|---------|--------|---------|---------|
 | **CB-LLM (Ours)**               | Accuracy↑        | 0.9638  | **0.9855** | 0.9439  | 0.9924  |
-|                                 | Steerability↑    | **0.82** | **0.95**  | **0.85**  | **0.58**  |
+|                                 | Steerability↑    | **0.82** | **0.95**  | **0.85**  | **0.76**  |
 |                                 | Perplexity↓      | 116.22  | 13.03  | 18.25   | 37.59   |
 | **CB-LLM w/o ADV training**     | Accuracy↑        | 0.9676  | 0.9830  | 0.9418  | **0.9934** |
 |                                 | Steerability↑    | 0.57    | 0.69    | 0.52    | 0.21    |
