@@ -132,7 +132,7 @@ if __name__ == "__main__":
 
     test_y = torch.LongTensor(encoded_test_dataset["label"])
 
-    final = torch.nn.Linear(in_features=len(concept_set), out_features=CFG.class_num[args.dataset])
+    final = torch.nn.Linear(in_features=len(concept_set), out_features=CFG.class_num[dataset])
     W_g_path = prefix + "W_g"
     b_g_path = prefix + "b_g"
     if args.sparse:
