@@ -86,10 +86,11 @@ This will generate 5 explanations for each sample in the dataset.
 Please change the argument `--cbl_path` accordingly if using other settings.
 #### Test the baseline black-box model
 To test the accuracy of the baseline standard black-box model, run
-Updates: the path is adjusted to the correct one
 ```
 python test_black_box.py --model_path baseline_models/SetFit_sst2/roberta/backbone_finetuned_sst2.pt
 ```
+Noted that we update the path to the correct one
+
 Set the argument `--dataset yelp_polarity`, `--dataset ag_news`, or `--dataset dbpedia_14` to switch the dataset.
 Please change the argument `--model_path` accordingly if using other settings.
 ### Key results
