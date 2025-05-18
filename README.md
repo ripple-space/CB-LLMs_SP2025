@@ -14,7 +14,7 @@ This repository is the reproduction of the experiments in the paper [**Concept B
 </p>
 
 ### Setup
-Instead of the setting suggest by the original repo, we use cuda12.1, python3.11, pytorch2.4, and torchvision0.19.0 to run the codes, which is reflected in our requirement.txt.
+Instead of the setting suggested by the original repo, we use cuda12.1, python3.11.12, pytorch2.4, and torchvision0.19.0 to run the codes, which is reflected in our requirement.txt.
 Go into the folder for classification case:
 ```
 cd classification
