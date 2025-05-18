@@ -1,9 +1,8 @@
+This repository is the reproduction of the experiments in the paper [**Concept Bottleneck Large Language Models**](https://arxiv.org/abs/2412.07992) [[project website](https://lilywenglab.github.io/CB-LLMs/)].
+
 # Concept Bottleneck Large Language Models
-01/22 update: CB-LLMs is accepted by ICLR2025!
 
-This is the official repo for the paper: [**Concept Bottleneck Large Language Models**](https://arxiv.org/abs/2412.07992) [[project website](https://lilywenglab.github.io/CB-LLMs/)].
-
-* In this work, we proposed **Concept Bottleneck Large Language Model (CB-LLM)**, the first framework for building *inherently interpretable* Large Language Models (LLMs) that works on both text generation and text classification tasks. CB-LLM extends and generalizes our earlier research, [**Crafting Large Language Models for Enhanced Interpretability**](https://arxiv.org/abs/2407.04307) for text classification tasks, offering both interpretability and controllability in text generation.
+* In this work, the paper proposed **Concept Bottleneck Large Language Model (CB-LLM)**, the first framework for building *inherently interpretable* Large Language Models (LLMs) that works on both text generation and text classification tasks. CB-LLM extends and generalizes our earlier research, [**Crafting Large Language Models for Enhanced Interpretability**](https://arxiv.org/abs/2407.04307) for text classification tasks, offering both interpretability and controllability in text generation.
 * This repo contains two parts:
   * **CB-LLM (classification):** Transforming pre-trained LLMs into interpretable LLMs for text classification 
   * **CB-LLM (generation):** Transforming pre-trained LLMs into interpretable LLMs for text generation  
