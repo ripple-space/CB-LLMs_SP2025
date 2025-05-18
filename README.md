@@ -191,7 +191,7 @@ Set the argument `--dataset yelp_polarity`, `--dataset ag_news`, or `--dataset d
 |                                 | Steerability↑    | No      | No      | No      | No      |
 |                                 | Perplexity↓      | 84.70   | **6.62**  | **12.52** | 41.50   |
 
-## Cite this work
+## Citation source
 Chung-En Sun, Tuomas Oikarinen, Berk Ustun, and Tsui-Wei Weng. "*Concept Bottleneck Large Language Models*". ICLR, 2025
 ```
 @article{cbllm,
