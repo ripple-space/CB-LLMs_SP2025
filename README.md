@@ -2,7 +2,8 @@ This repository is the reproduction of the experiments in the paper [**Concept B
 
 # Concept Bottleneck Large Language Models
 
-* In this work, the paper proposed **Concept Bottleneck Large Language Model (CB-LLM)**, the first framework for building *inherently interpretable* Large Language Models (LLMs) that works on both text generation and text classification tasks. CB-LLM extends and generalizes our earlier research, [**Crafting Large Language Models for Enhanced Interpretability**](https://arxiv.org/abs/2407.04307) for text classification tasks, offering both interpretability and controllability in text generation.
+* In this work, the paper proposed **Concept Bottleneck Large Language Model (CB-LLM)**, the first framework for building *inherently interpretable* Large Language Models (LLMs) that works on both text generation and text classification tasks.
+
 * This repo contains two parts:
   * **CB-LLM (classification):** Transforming pre-trained LLMs into interpretable LLMs for text classification 
   * **CB-LLM (generation):** Transforming pre-trained LLMs into interpretable LLMs for text generation  
@@ -13,7 +14,7 @@ This repository is the reproduction of the experiments in the paper [**Concept B
 </p>
 
 ### Setup
-Recommend using cuda12.1, python3.10, pytorch2.2.
+Instead of the setting suggest by the original repo, we use cuda12.1, python3.11, pytorch2.4, and torchvision0.19.0 to run the codes, which is reflected in our requirement.txt.
 Go into the folder for classification case:
 ```
 cd classification
@@ -23,7 +24,7 @@ Install the packages:
 ```
 pip install -r requirements.txt
 ```
-We also provide finetuned CB-LLMs, allowing you to skip the training process. Download the checkpoints from huggingface:
+Finetuned CB-LLMs is provided here from the original repo, allowing you to skip the training process.
 ```
 git lfs install
 git clone https://huggingface.co/cesun/cbllm-classification temp_repo
@@ -70,14 +71,14 @@ python test_CBLLM.py --cbl_path mpnet_acs/SetFit_sst2/roberta_cbm/cbl_acc.pt
 ```
 Please change the argument `--cbl_path` accordingly if using other settings.  For example, w/o Automatic Concept Correction will be save as `cbl.pt`. Add the `--sparse` argument for testing with the sparse final layer.
 #### Generate explanations from CB-LLM
-To visualize the neurons in CB-LLM (task 1 in our paper), run
+To visualize the neurons in CB-LLM (task 1 in the paper), run
 ```
 python print_concept_activations.py --cbl_path mpnet_acs/SetFit_sst2/roberta_cbm/cbl_acc.pt
 ```
 This will generate 5 most related samples for each neuron explanation.
 Please change the argument `--cbl_path` accordingly if using other settings.
 
-To get the explanations provided by CB-LLM (task 2 in our paper), run
+To get the explanations provided by CB-LLM (task 2 in the paper), run
 ```
 python print_concept_contributions.py --cbl_path mpnet_acs/SetFit_sst2/roberta_cbm/cbl_acc.pt
 ```
@@ -85,8 +86,9 @@ This will generate 5 explanations for each sample in the dataset.
 Please change the argument `--cbl_path` accordingly if using other settings.
 #### Test the baseline black-box model
 To test the accuracy of the baseline standard black-box model, run
+Updates: the path is adjusted to the correct one
 ```
-python test_black_box.py --model_path baseline_models/roberta/backbone_finetuned_sst2.pt
+python test_black_box.py --model_path baseline_models/SetFit_sst2/roberta/backbone_finetuned_sst2.pt
 ```
 Set the argument `--dataset yelp_polarity`, `--dataset ag_news`, or `--dataset dbpedia_14` to switch the dataset.
 Please change the argument `--model_path` accordingly if using other settings.
