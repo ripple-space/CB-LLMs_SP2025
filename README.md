@@ -2,7 +2,7 @@ This repository is the reproduction of the experiments in the paper [**Concept B
 
 # Concept Bottleneck Large Language Models
 
-* In this work, the paper proposed **Concept Bottleneck Large Language Model (CB-LLM)**, the first framework for building *inherently interpretable* Large Language Models (LLMs) that works on both text generation and text classification tasks.
+* The paper proposed **Concept Bottleneck Large Language Model (CB-LLM)**, the first framework for building *inherently interpretable* Large Language Models (LLMs) that works on both text generation and text classification tasks.
 
 * This repo contains two parts:
   * **CB-LLM (classification):** Transforming pre-trained LLMs into interpretable LLMs for text classification 
